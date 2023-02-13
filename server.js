@@ -1,7 +1,14 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const session = require('express-session');
+const routes = require('./controllers');
+const helpers = require('./utils/helpers');
+const path = require('path');
 
-const hbs = exphbs.create({});
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const hbs = exphbs.create({ helpers });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -12,27 +19,36 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+const sess = {
+  secret: 'Super secret secret',
+  cookie: {
+    maxAge: 300000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
+
+app.use(session(sess));
+
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(routes);
+
+
 // all routes will go to controllers folder
 // Import routes and give the server access to them.
 
-//link to homepage
-app.get('/', (req, res) => {
-  res.render('all');
-});
 
-//link to dashbord file
-app.get('/dashboard', (req, res) => {
-  res.render('dashboard');
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => {
+    console.log(`Listening on route ${PORT}...`)
+  });
 });
-
-//link to log in file
-app.get('/login', (req, res) => {
-  res.render('login');
-});
-
-app.listen(PORT, () => {
-  console.log(`Listening on route ${PORT}...`)
-})
 
 
 // const path = require('path');
