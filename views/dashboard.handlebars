@@ -1,3 +1,30 @@
-
-
 <h1>This is the dash board file!</h1>
+
+<p>Welcome, {{user.username}}</p>
+<h2>Posts You've Created</h2>
+
+<ul>
+  {{#each posts}}
+    <li>
+      <h3>{{title}}</h3>
+      <p>{{content}}</p>
+    </li>
+  {{/each}}
+</ul>
+
+<h2>Write A New Post</h2>
+<form class="postForm">
+  <label for="title">Title:</label>
+  <br />
+
+  <input type="text" name="title" id="title" />
+  <label for="content">Content:</label>
+  <br />
+
+  <textarea name="content" id="content"></textarea>
+  <input type="hidden" id="user_id" data-userid="{{userId}}" />
+
+  <input type="submit" />
+</form>
+
+{{! <script src="/js/post.js"></script> }}
