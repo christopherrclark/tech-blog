@@ -1,5 +1,6 @@
 const handleDelete = function(event) {
   event.preventDefault();
+  console.log('click')
   const id = event.target.getAttribute('data-id');
   const response = confirm('Are you sure you want to delete this post?');
   if (response) {
@@ -10,3 +11,9 @@ const handleDelete = function(event) {
     });
   }
 };
+
+document
+  .querySelectorAll('.delete')
+  .forEach(button => button.addEventListener('click', handleDelete));
+  
+console.log("hello");

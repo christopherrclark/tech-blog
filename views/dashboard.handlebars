@@ -5,12 +5,12 @@
 
 <ul>
   {{#each posts}}
-    <li>
+    <li data-id={{id}}>
       <a href="/dashboard/edit/{{id}}">
        <h3>{{title}}</h3>
         <p>{{content}}</p>
       </a>
-<button id="delete">delete</button>
+<button data-id={{id}} class="delete">delete</button>
     </li>
   {{/each}}
 </ul>
@@ -31,3 +31,4 @@
 </form>
 
 <script src="/js/post.js"></script>
+<script src="/js/delete.js"></script>
