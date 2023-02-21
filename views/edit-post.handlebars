@@ -1,0 +1,18 @@
+<div>
+  <h2>Edit Post</h2>
+  <form class="postForm">
+    <label for="title">Title:</label>
+    <br />
+
+    <input type="text" name="title" id="edit-title" />
+    <label for="content">Content:</label>
+    <br />
+
+    <textarea name="content" id="edit-content"></textarea>
+    <input type="hidden" id="user_id" data-userid="{{userId}}" />
+
+    <input type="submit" id="edit-btn" />
+  </form>
+</div>
+
+<script src="/js/edit-post.js"></script>

@@ -29,8 +29,7 @@ router.get("/edit/:id", withAuth, async (req, res) => {
   try {
     const post = await Post.findByPk(req.params.id);
     if (post) {
-      res.render("editpost", {
-        layout: "dashboard",
+      res.render("edit-post", {
         post,
       });
     } else {

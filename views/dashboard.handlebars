@@ -6,8 +6,11 @@
 <ul>
   {{#each posts}}
     <li>
-      <h3>{{title}}</h3>
-      <p>{{content}}</p>
+      <a href="/dashboard/edit/{{id}}">
+       <h3>{{title}}</h3>
+        <p>{{content}}</p>
+      </a>
+<button id="delete">delete</button>
     </li>
   {{/each}}
 </ul>
@@ -24,7 +27,7 @@
   <textarea name="content" id="content"></textarea>
   <input type="hidden" id="user_id" data-userid="{{userId}}" />
 
-  <input type="submit" />
+  <input type="submit" id="submit-btn" />
 </form>
 
-{{! <script src="/js/post.js"></script> }}
+<script src="/js/post.js"></script>

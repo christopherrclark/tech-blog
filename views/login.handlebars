@@ -1,24 +1,32 @@
 <div>
   <div class="login-div">
     <h2>Log In</h2>
-    <form>
+    
       <div>
-        <label for="username-login">Username</label>
-        <input class="form-input" type="text" id="username-login" />
+        <label for="email-login">Email</label>
+        <input class="form-input" type="text" id="email-login" />
       </div>
+
       <div>
         <label for="password-login">Password</label>
         <input class="form-input" type="password" id="password-login" />
       </div>
+      
       <div>
-        <button type="submit">Log In</button>
+        <button id="login-btn">Log In</button>
       </div>
-    </form>
+   
   </div>
 
   <div class="login-div">
     <h2>Sign Up</h2>
-    <form>
+     <form class="signup-form">
+
+      <div>
+        <label for="email-signup">Email</label>
+        <input class="form-input" type="text" id="email-signup" />
+      </div>
+
       <div>
         <label for="username-signup">Username</label>
         <input class="form-input" type="text" id="username-signup" />
@@ -36,8 +44,8 @@
   </div>
 </div>
 
-{{! <script src="/js/login.js"></script>
-<script src="/js/signup.js"></script>  }}
+<script src="/js/login.js"></script>
+{{!-- <script src="/js/signup.js"></script>  --}}
 
 {{! <h1>This is the log in file!</h1>
 
